@@ -6,19 +6,23 @@
     <title>Big Brother</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="src/css/bigbrother.css" />
-    <script
+    <!-- <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
     <h1>Big Brother</h1>
     <label>Twitter Username:
         <input type="text", id="usernameInput">
+        <input type="submit" id="enter" name="twitterName">
     </label>
-    <div id="pos">Positive: </div>
-    <div id="neutral">Negative: </div>
-    <div id="neg">Neutral: </div>
-    <script src="src/js/bigbrother.js"></script>
+    <div id="pos"></div>
+    <div id="neg"></div>
+    <div id="neutral"></div>
+
+    <div id="pie"></div>
+    <script src="/static/sentimentanalysis/js/bigbrother.js"></script>
 </body>
 </html>

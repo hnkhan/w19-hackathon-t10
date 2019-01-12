@@ -5,3 +5,8 @@ from django.http import HttpResponse
 
 def home(request):
     return render(request, 'sentimentanalysis/input.html')
+
+def form(request):
+    return HttpResponse("test")
+
+
