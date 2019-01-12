@@ -1,18 +1,8 @@
-var percentPos = 0.5;
-var percentNeutral = 0.3;
-var percentNeg = 0.2;
+var pieGenerated = false;
 
-percentageData = {"pos": 0.5,
-"neg": 0.2,
-"neutral": 0.3};
-
-data = [{"title":"positive", "value":0.5},
-    { "title": "negative", "value": 0.2},
-    { "title": "neutral", "value": 0.3}];
-
-d3.select("#pos").text("Positive: " + percentageData.pos + "%");
-d3.select("#neg").text("Negative: " + percentageData.neg + "%");
-d3.select("#neutral").text("Neutral: " + percentageData.neutral + "%");
+data = [{"title":"Positive", "value":0.5},
+    { "title": "Negative", "value": 0.2},
+    { "title": "Neutral", "value": 0.3}];
 
 var color = d3.scaleOrdinal()
     .range(["#2C93E8", "#838690", "#F56C4E"]);
@@ -44,19 +34,45 @@ var g = svg.selectAll("arc")
     .enter().append("g")
     .attr("class", "arc");
 
-g.append("path")
-    .attr("d", arc)
-    .style("fill", function (d) { return color(d.data.title); });
-
-g.append("text")
-    .attr("transform", function (d) { return "translate(" + labelArc.centroid(d) + ")"; })
-    .text(function (d) { return d.data.title; })
-    .attr("class", "label");
-
 function update() {
     var pie = d3.pie()
         .value(function (d) { return d.value; })(data);
     path = d3.select("#pie").selectAll("path").data(pie); // Compute the new angles
     path.attr("d", arc); // redrawing the path
     d3.selectAll("text").data(pie).attr("transform", function (d) { return "translate(" + labelArc.centroid(d) + ")"; }); // recomputing the centroid and translating the text accordingly.
+    populateTextFields();
 }
+
+function populateTextFields() {
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].title === "Positive") {
+            d3.select("#pos").text("Positive: " + data[i].value + "%");
+        } else if (data[i].title === "Negative") {
+            d3.select("#neg").text("Negative: " + data[i].value + "%");
+        } else if (data[i].title === "Neutral") {
+            d3.select("#neutral").text("Neutral: " + data[i].value + "%");
+        }
+    }
+}
+
+function generatePie() {
+    pieGenerated = true;
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) { return color(d.data.title); });
+
+    g.append("text")
+        .attr("transform", function (d) { return "translate(" + labelArc.centroid(d) + ")"; })
+        .text(function (d) { return d.data.title; })
+        .attr("class", "label");
+}
+
+d3.select("#enter")
+    .on("click", function () {
+        populateTextFields();
+        if (pieGenerated) {
+            update();
+        } else {
+            generatePie();
+        }
+    })
