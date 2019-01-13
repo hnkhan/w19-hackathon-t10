@@ -1,5 +1,5 @@
 var pieGenerated = false;
-
+console.log("hi");
 data = [{"title":"Positive", "value":0.5},
     { "title": "Negative", "value": 0.2},
     { "title": "Neutral", "value": 0.3}];
@@ -73,6 +73,7 @@ d3.select("#enter")
         axios.get('http://127.0.0.1:8000/sentimentanalysis/form')
             .then(function (response) {
                 // handle success
+                console.log('success');
                 console.log(response);
             })
         populateTextFields();
