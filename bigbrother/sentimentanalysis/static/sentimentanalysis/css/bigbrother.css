@@ -17,6 +17,10 @@ body {
     margin: 20px;
 }
 
+#subtext {
+    font-size: 9px;
+}
+
 .label {
     fill: white;
 }

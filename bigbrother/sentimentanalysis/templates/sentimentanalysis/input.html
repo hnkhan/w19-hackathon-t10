@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Big Brother</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/static/sentimentanalysis/css/bigbrother.css" />
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -12,20 +14,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 </head>
 <body>
-    <h1>Big Brother</h1>
-    <div id="nameInput">
-        <label>Twitter Handle:
-            <input type="text" , id="usernameInput">
-            <input type="submit" id="enter" name="twitterName">
-        </label>
+    <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-2">Big Brother</h1>
+                <p class="lead">is watching you<span id="subtext">r Twitter account</span></p>
+                
+                <div id="nameInput">
+                    <div class="input-group mb-3">
+                            <input type="text" id="usernameInput" class="form-control" placeholder="Twitter Handle" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button id="enter" name="twitterName" class="btn btn-outline-secondary" type="button"><span class="fas fa-eye"></span></button>
+                            </div>
+                    </div>
+                </div>
+            </div>
     </div>
-    <img id="twitterProfile" height="100" width="100">
-    <div id="twitterName"></div>
-    <div id="percentageText">
-        <div id="pos"></div>
-        <div id="neg"></div>
-        <div id="neutral"></div>
-    </div>
+
+    <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm">
+                    <img id="twitterProfile" height="100" width="100">
+                    <div id="twitterName"></div>
+                    <div id="percentageText">
+                        <div id="pos"></div>
+                        <div id="neg"></div>
+                        <div id="neutral"></div>
+                    </div>
+              </div>
+              <div class="col-sm">
+                    <div id="pie"></div>
+              </div>
+            </div>
+          </div>
     <div id="pie"></div>
     <script src="/static/sentimentanalysis/js/bigbrother.js"></script>
 </body>
