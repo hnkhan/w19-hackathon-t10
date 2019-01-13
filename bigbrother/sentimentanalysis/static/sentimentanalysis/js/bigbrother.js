@@ -1,6 +1,6 @@
 var pieGenerated = false;
 console.log("hi");
-data = [{"title":"Positive", "value":0.5},
+data = [{"title":"Positive", "value":0.1},
     { "title": "Negative", "value": 0.2},
     { "title": "Neutral", "value": 0.3}];
 
@@ -66,24 +66,41 @@ function generatePie() {
         .text(function (d) { return d.data.title; })
         .attr("class", "label");
 }
+async function getUser() {
+    try {
+        const response = await axios.get('/user?ID=12345');
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 d3.select("#enter")
-    .on("click", function () {
+    .on("click", async function () {
         var username = document.getElementById('usernameInput').value;
         console.log(username);
         d3.select("#name").text("new name");
         // Make a request for a user with a given ID
-        axios.get('http://127.0.0.1:8000/sentimentanalysis/form/' + username)
-            .then(function (response) {
-                // handle success
-                console.log('success');
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log("error");
-                console.log(error);
-            })
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/sentimentanalysis/form/' + username);
+            // handle success
+            console.log('success');
+            console.log(response);
+            console.log(response.data["Positive"]);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].title === "Positive") {
+                    data[i].value = response.data["Positive"];
+                } else if (data[i].title === "Negative") {
+                    data[i].value = response.data["Negative"];
+                } else if (data[i].title === "Neutral") {
+                    data[i].value = response.data["Neutral"];
+                }
+            }
+        } catch (error) {
+            // handle error
+            console.log("error");
+            console.log(error);
+        }
         populateTextFields();
         if (pieGenerated) {
             update();
@@ -91,3 +108,41 @@ d3.select("#enter")
             generatePie();
         }
     })
+
+
+
+
+// d3.select("#enter")
+//     .on("click", async function () {
+//         var username = document.getElementById('usernameInput').value;
+//         console.log(username);
+//         d3.select("#name").text("new name");
+//         // Make a request for a user with a given ID
+//         axios.get('http://127.0.0.1:8000/sentimentanalysis/form/' + username)
+//             .then(function (response) {
+//                 // handle success
+//                 console.log('success');
+//                 console.log(response);
+//                 console.log(response.data["Positive"]);
+//                 for (var i = 0; i < data.length; i++) {
+//                     if (data[i].title === "Positive") {
+//                         data[i].value = response.data["Positive"];
+//                     } else if (data[i].title === "Negative") {
+//                         data[i].value = response.data["Negative"];
+//                     } else if (data[i].title === "Neutral") {
+//                         data[i].value = response.data["Neutral"];
+//                     }
+//                 }
+//             })
+//             .catch(function (error) {
+//                 // handle error
+//                 console.log("error");
+//                 console.log(error);
+//             })
+//         populateTextFields();
+//         if (pieGenerated) {
+//             update();
+//         } else {
+//             generatePie();
+//         }
+//     })
