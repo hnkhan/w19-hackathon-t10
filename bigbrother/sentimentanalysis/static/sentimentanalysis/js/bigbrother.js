@@ -143,7 +143,6 @@ d3.select("#enter")
             }
         } catch (error) {
             // handle error
-            console.log("error");
             console.log(error);
         }
     })
