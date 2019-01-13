@@ -16,26 +16,26 @@
 <body>
     <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-2">Big Brother</h1>
+                <h1 class="display-3">Big Brother</h1>
                 <p class="lead">is watching you<span id="subtext">r Twitter account</span></p>
-                
-                <div id="nameInput">
-                    <div class="input-group mb-3">
-                            <input type="text" id="usernameInput" class="form-control" placeholder="Twitter Handle" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button id="enter" name="twitterName" class="btn btn-outline-secondary" type="button"><span class="fas fa-eye"></span></button>
-                            </div>
+                <div class="col-sm input-group mb-3" id="inputbox">
+                    <input type="text" id="usernameInput" class="form-control" placeholder="Twitter Handle" aria-label="Recipient's username"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button id="enter" name="twitterName" class="btn btn-outline-secondary" type="button">
+                            <span class="fas fa-eye"></span>
+                        </button>
                     </div>
                 </div>
             </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container" id="stats">
             <div class="row">
               <div class="col-sm">
-                    <img id="twitterProfile" height="100" width="100">
-                    <div id="twitterName"></div>
-                    <div id="percentageText">
+                    <img id="twitterProfile" height="200" width="200">
+                    <div id="twitterName" class="display-4"></div>
+                    <div id="percentageText" class="lead">
                         <div id="pos"></div>
                         <div id="neg"></div>
                         <div id="neutral"></div>

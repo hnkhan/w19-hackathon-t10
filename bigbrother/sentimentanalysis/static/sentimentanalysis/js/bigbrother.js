@@ -43,8 +43,8 @@ http://www.cagrimmett.com/til/2016/08/19/d3-pie-chart.html
 var color = d3.scaleOrdinal()
     .range(["#2C93E8", "#838690", "#F56C4E"]);
 
-var width = 300,
-    height = 300,
+var width = 350,
+    height = 350,
     radius = Math.min(width, height) / 2;
 
 var pie = d3.pie()

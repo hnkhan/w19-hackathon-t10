@@ -7,6 +7,11 @@ body {
 
 #nameInput {
     margin: 20px;
+    width: 50%;
+}
+
+#inputbox {
+    align-items: center;
 }
 
 #usernameInput {
@@ -29,10 +34,15 @@ img {
     border-radius: 50%;
 }
 
-#twitterProfile { 
-    visibility: hidden; 
+#twitterProfile {
+    visibility: hidden;
+    margin: 20px;
 }
 
-#twitterName { 
-    visibility: hidden; 
+#twitterName {
+    visibility: hidden;
+}
+
+#stats {
+    padding: 60px 0 60px 0;
 }
