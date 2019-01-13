@@ -30,7 +30,7 @@ def getSentiments(username):
     twitter_name = username
     user = api.get_user(twitter_name)
     twitter_id = user.id
-    tweets = api.user_timeline(id = twitter_id, count = 10)
+    tweets = api.user_timeline(id = twitter_id, count = 200)
 
     count = 1
     sentiments = {"Positive": 0, "Negative": 0, "Neutral": 0}
