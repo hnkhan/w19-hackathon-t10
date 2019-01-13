@@ -107,6 +107,13 @@ d3.select("#enter")
         } else {
             generatePie();
         }
+
+        document.getElementById("twitterProfile").src="http://avatars.io/twitter/" + username;
+        document.getElementById("twitterName").innerHTML = username;
+
+        document.getElementById("twitterProfile").style.visibility = "visible";
+        document.getElementById("twitterName").style.visibility = "visible";
+
     })
 
 

@@ -20,3 +20,15 @@ body {
 .label {
     fill: white;
 }
+
+img {
+    border-radius: 50%;
+}
+
+#twitterProfile { 
+    visibility: hidden; 
+}
+
+#twitterName { 
+    visibility: hidden; 
+}
